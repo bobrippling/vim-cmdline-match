@@ -1,0 +1,3 @@
+# cmdline-match.vim
+
+Functions for matching on vim command lines, ignoring modifiers.
