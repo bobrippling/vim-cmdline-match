@@ -12,12 +12,12 @@ function! s:get_re(cmd)
 	return '\v%(^|\|)[: \t]*' . modifiers . range . '%(' . a:cmd . ')'
 endfunction
 
-function! cmdline#matching(cmd)
-	let re = s:get_re(a:cmd)
+function! cmdline#matching(re)
+	let re = s:get_re(a:re)
 	return matchlist(getcmdline(), re)
 endfunction
 
-function! cmdline#matches_cmd(cmd)
-	let re = s:get_re(a:cmd)
+function! cmdline#matches_cmd(re)
+	let re = s:get_re(a:re)
 	return getcmdline() =~ re
 endfunction
