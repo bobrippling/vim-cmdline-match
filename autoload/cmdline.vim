@@ -36,19 +36,7 @@ function! cmdline#split(re)
 	" \1: pre
 	" \2...: a:re
 	" \3: post
-	let list = matchlist(cmd, re)
-	if empty(list)
-		return list
-	endif
-
-	" [pre, re]
-	let matched = list[1:3]
-
-	for i in range(4, len(list) - 1)
-		let matched[2] .= list[i]
-	endfor
-
-	return matched
+	return split(cmd, '\ze' . re)
 endfunction
 
 function! cmdline#matches_cmd(re)
