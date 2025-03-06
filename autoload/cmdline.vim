@@ -29,8 +29,12 @@ endfunction
 " pre  (e.g. `bot`)
 " cmd  (e.g. `sp`)
 " post (e.g. `file.txt`)
-function! cmdline#split(re)
-	let cmd = getcmdline()
+function! cmdline#split(re, ...)
+	if a:0 > 1
+		throw "cmdline#split: too many args"
+	endif
+
+	let cmd = a:0 > 0 ? a:1 : getcmdline()
 
 	let re = s:get_re(a:re . '(.*)', 1)
 	" \1: pre
