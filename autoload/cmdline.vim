@@ -37,6 +37,11 @@ function! cmdline#split(re, ...)
 	let cmd = a:0 > 0 ? a:1 : getcmdline()
 
 	let re = s:get_re(a:re . '(.*)', 1)
+
+	if cmd !~ re
+		return []
+	endif
+
 	" \1: pre
 	" \2...: a:re
 	" \3: post
