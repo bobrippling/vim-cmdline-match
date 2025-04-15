@@ -3,7 +3,7 @@ function! s:get_re(cmd, capture_before)
 		return 0
 	endif
 
-	let range1 = "%(%([0-9%$]+|'.) *)?"
+	let range1 = "%(%(-?[0-9%$]*|'.) *)?"
 	let range = range1 . "%(," . range1 . ")?"
 
 	let modifiers = '%(%(hid%[e]|keepa%[lt]|tab|vert%[ical]|lefta%[bove]|abo%[veleft]|rightb%[elow]|bel%[owright]|to%[pleft]|bo%[tright]|' . range . ')\s+)*'
